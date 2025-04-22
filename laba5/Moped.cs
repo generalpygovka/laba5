@@ -4,18 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace laba5
+namespace laba5;
+
+public class Moped : TwoWheeledTransport
 {
-    public class Moped : TwoWheeledTransport
+    public Moped(int speed) : base(speed)
     {
-        public Moped(int speed, int wheels) : base(speed, wheels)
-        {
-        }
-        public override void ShowInfo()
-        {
-            Console.WriteLine($"Тип транспорту: Мопед");
-            Console.WriteLine($"Швидкість: {Speed}");
-            Console.WriteLine($"Кількість колес: {Wheels}");
-        }
+    }
+    public override void ShowInfo()
+    {
+        Console.WriteLine($"Тип транспорту: Мопед");
+        base.ShowInfo();
     }
 }

@@ -4,29 +4,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace laba5
+namespace laba5;
+
+public abstract class Transport
 {
-    public abstract class Transport
+    public bool ExistingDoors { get; set; }
+    private string openedDoors;
+    public string OpenedDoors
     {
-        public bool ExistingDoors { get; set; }
-        private string openedDoors;
-        public string OpenedDoors
+        get
         {
-            get { return openedDoors; }
-            set {
-                if (!ExistingDoors)
-                {
-                    openedDoors = "No doors";
-                }else
-                openedDoors = value; }
+            if (!ExistingDoors)
+            {
+                openedDoors = "No doors";
+            }
+            else openedDoors = "Locked";
+
+            return openedDoors;
         }
-        public int Speed { get; set; }
-        public int Wheels { get; set; }
-        public Transport( int speed, int wheels)
-        {
-            Speed = speed;
-            Wheels = wheels;
-        }
-        public abstract void ShowInfo();
+        set { openedDoors = value; }
+    }
+    public int Speed { get; set; }
+    public int Wheels { get; set; }
+    public Transport(int speed)
+    {
+        Speed = speed;
+    }
+    public virtual void ShowInfo()
+    {
+        Console.WriteLine($"Швидкість: {Speed} км/год");
+        Console.WriteLine($"Кількість колес: {Wheels}");
+        Console.WriteLine($"Двері: {OpenedDoors}");
     }
 }
